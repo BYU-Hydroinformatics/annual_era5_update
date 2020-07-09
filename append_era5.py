@@ -4,7 +4,7 @@ append_era5.py
 Author: Chris Edwards
 Copyright June 2020
 License: BSD 3 Clause
-Updated: June 2020
+Updated: July 2020
 
 Script to append ERA-5 RAPID simulation onto a master netCDF, eg. add 2019 to the 1979-2018 file.
 To run the script, give 3 additional arguments:

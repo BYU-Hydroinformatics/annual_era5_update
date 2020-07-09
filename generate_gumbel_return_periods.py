@@ -4,7 +4,7 @@ generate_gumbel_return_periods.py
 Author: Riley Hales
 Copyright May 2020
 License: BSD 3 Clause
-Updated: June 2020
+Updated: July 2020
 
 Script to compute Gumbel return periods (2-, 5-, 10-, 25-, 50-, and 100-yr) based on historical streamflow simulation.
 The historical simulation needs to be in daily increments.

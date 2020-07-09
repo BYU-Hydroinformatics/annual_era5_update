@@ -4,7 +4,7 @@ update_era5_workflow.py
 Author: Chris Edwards
 Copyright June 2020
 License: BSD 3 Clause
-Updated: June 2020
+Updated: July 2020
 
 Script to run ERA-5 RAPID simulation for one whole year of ERA-5 Runoff data.
 To run the script, give 6 additional arguments:
