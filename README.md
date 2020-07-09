@@ -1,6 +1,6 @@
 # Update ERA-5 Workflow
 
-The purpose of this workflow is to update the ERA-5 RAPID simulation and corresponding return periods each year. The ERA-5 Historical Simulation is part of the GEOGloWS Streamflow Services.
+The purpose of these scripts is to update the ERA-5 RAPID simulation and corresponding return periods each year. The ERA-5 Historical Simulation is part of the GEOGloWS ECMWF Streamflow Model.
 
 ## Required Setup
 
@@ -11,11 +11,11 @@ The purpose of this workflow is to update the ERA-5 RAPID simulation and corresp
     1. The input folder for each region also needs to have an initial flows file from the last ERA-5 simulation (eg: "qinit_era5_t640_24hr_19790101to20181231.csv"). The filename must start with "qinit_era5" and end with "YYYYMMDDtoYYYYMMDD.csv".
 4. Create or identify the output folder. This should be different from the forecast output directory and could be named 'era-5'. The output folder for rapid can be the same location as where the complete historical simulation files are stored.
 5. Create a directory for log files.
-7. Required python packages in addition to RAPIDpy: netCDF4, numpy, pandas, statistics
+7. Other python dependencies in addition to RAPIDpy: python 3+, netCDF4, numpy, pandas, statistics
 
 ## Workflow description
-There are 4 scripts:
-1. (Coming soon) calculate-daily-ro.py
+There are 4 scripts involved in this workflow which you need to execute in this order:
+1. calculate-daily-runoff.py
     1. This script aggregates hourly runoff to daily. 
 2. run_era5_rapid.py
     1. This script runs rapid for a whole year of ERA-5 Runoff data (should be aggregated to daily). It reads an initial flows file which was created at the end of the previous simulation. A new file will be created at the end of the next simulation as well.

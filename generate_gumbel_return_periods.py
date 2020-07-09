@@ -1,7 +1,7 @@
 """
 generate_gumbel_return_periods.py
 
-Author: Riley Hales
+Author: Riley Hales, Chris Edwards
 Copyright May 2020
 License: BSD 3 Clause
 Updated: July 2020
@@ -9,10 +9,12 @@ Updated: July 2020
 Script to compute Gumbel return periods (2-, 5-, 10-, 25-, 50-, and 100-yr) based on historical streamflow simulation.
 The historical simulation needs to be in daily increments.
 
-To run the script, give 6 additional arguments:
+To run the script, give 3 additional arguments:
     1. path to master directory containing complete historical simulation netCDF's (with subfolders for each region)
     2. path to the directory of log files
     3. ending year to process (eg: 2020)
+
+python generate_gumbel_return_periods.py /path/to/era-5/results/dir /path/to/logs/dir end_year_of_simulation
 """
 
 import os
@@ -128,7 +130,7 @@ def gumbel_return_periods(path_Qout, ending_year_str):
     return
 
 
-# for running this script from the command line with a script
+# for running this script from the command line
 if __name__ == '__main__':
     """
     sys.argv[0] this script e.g. generate_gumbel_return_periods.py
