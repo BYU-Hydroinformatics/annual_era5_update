@@ -40,6 +40,3 @@ python append_era5.py /home/era-5 /home/era-5 /home/logs 2020
 ```bash
 python generate_gumbel_return_periods.py /home/era-5 /home/logs 2020
 ```
-
-
-Lastly, the scripts need to be in a place where they can access the RAPIDpy code (see imports_era5_workflow.py). 
