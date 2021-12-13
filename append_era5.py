@@ -19,7 +19,7 @@ import netCDF4 as nc
 import numpy as np
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 def append_era5_to_record(record_file_path, addition_file_path):
@@ -99,7 +99,8 @@ if __name__ == '__main__':
     output_dir = sys.argv[1]
     master_era5_dir = sys.argv[2]
     logs_dir = sys.argv[3]
-    year_to_add = sys.argv[4]
+    addition_start_date = sys.argv[4]
+    addition_end_date = sys.argv[5]
 
     # Start logging & capture scdtdout to log file (instead of printing to console or command line)
     script_start_time = datetime.now()
@@ -109,9 +110,9 @@ if __name__ == '__main__':
     print('Script append_era5.py initiated ' + script_start_time.strftime('%c') + '\n')
 
     # Figure out dates that show up in file-names
-    addition_start_date = year_to_add + '0101'
-    addition_end_date = year_to_add + '1231'
-    record_end_date = str(int(year_to_add) - 1) + '1231'
+    addition_start_date_datetime = datetime.strptime(addition_start_date, '%Y%m%d')
+    record_end_date_datetime = addition_start_date_datetime - timedelta(days=1)
+    record_end_date = record_end_date_datetime.strftime('%Y%m%d')
     print('Addition start & end dates: ' + addition_start_date + ' to ' + addition_end_date + '\n')
 
     # Loop through directory

@@ -84,7 +84,8 @@ if __name__ == '__main__':
     master_input_location = sys.argv[3]
     master_output_location = sys.argv[4]
     logs_dir = sys.argv[5]
-    simulation_year_str = sys.argv[6]
+    simulation_start_date_str = sys.argv[6]
+    simulation_end_date_str = sys.argv[7]
 
     # start logging & capture stdout/stderr to log/err file (instead of printing to console or command line)
     script_start_time = datetime.now()
@@ -99,10 +100,8 @@ if __name__ == '__main__':
 
     # Figure out dates (previous run end date, simulation start and max end date, simulation year)
     print('\nFiguring out dates...')
-    simulation_start_date_str = simulation_year_str + '0101'
     simulation_start_datetime = datetime.strptime(simulation_start_date_str, '%Y%m%d')
     print('Simulation start date: ' + simulation_start_date_str)
-    simulation_end_date_str = simulation_year_str + '1231'
     simulation_end_datetime = datetime.strptime(simulation_end_date_str, '%Y%m%d')
     print('Simulation end date: ' + simulation_end_date_str)
     prev_sim_end_datetime = simulation_start_datetime - timedelta(days=1)
@@ -113,16 +112,17 @@ if __name__ == '__main__':
     print('\nLooping through and running RAPID on each region...\n')
     input_regions = os.listdir(master_input_location)
     for region in input_regions:
-        run_era5_rapid_simulation(
-            region,
-            rapid_executable_location,
-            lsm_data_location,
-            master_input_location,
-            master_output_location,
-            prev_sim_end_date_str,
-            simulation_start_datetime,
-            simulation_end_datetime
-        )
+        if region.endswith('geoglows'):
+            run_era5_rapid_simulation(
+                region,
+                rapid_executable_location,
+                lsm_data_location,
+                master_input_location,
+                master_output_location,
+                prev_sim_end_date_str,
+                simulation_start_datetime,
+                simulation_end_datetime
+            )
     print('\nDone with RAPID simulation for all regions.\n')
 
     # Delete .err file if empty
