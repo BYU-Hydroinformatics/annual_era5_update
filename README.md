@@ -28,7 +28,7 @@ There are 4 scripts involved in this workflow which you need to execute in this 
 
 ## Running the scripts.
 
-Each script needs additional arguments in order to run. These are explained in each .py file. For example:
+Each script needs additional arguments in order to run. These are explained in each .py file.
 
 For Example: 
 ```bash
